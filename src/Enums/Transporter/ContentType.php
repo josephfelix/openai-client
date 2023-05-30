@@ -7,8 +7,8 @@ namespace OpenAI\Enums\Transporter;
 /**
  * @internal
  */
-enum ContentType: string
+class ContentType
 {
-    case JSON = 'application/json';
-    case MULTIPART = 'multipart/form-data';
+    public const JSON = 'application/json';
+    public const MULTIPART = 'multipart/form-data';
 }
