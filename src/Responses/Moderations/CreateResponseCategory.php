@@ -9,7 +9,7 @@ use OpenAI\Enums\Moderations\Category;
 final class CreateResponseCategory
 {
     /** @var Category */
-    public Category $category;
+    public string $category;
 
     /** @var bool */
     public bool $violated;
@@ -18,7 +18,7 @@ final class CreateResponseCategory
     public float $score;
 
     private function __construct(
-        Category $category,
+        string $category,
         bool $violated,
         float $score
     ) {

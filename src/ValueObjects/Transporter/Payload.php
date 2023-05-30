@@ -18,11 +18,11 @@ use Psr\Http\Message\StreamInterface;
  */
 final class Payload
 {
-    /** @var array<string, mixed> */
-    private ContentType $contentType;
+    /** @var string */
+    private string $contentType;
 
-    /** @var array<string, mixed> */
-    private Method $method;
+    /** @var string */
+    private string $method;
 
     /** @var array<string, mixed> */
     private ResourceUri $uri;
@@ -36,8 +36,8 @@ final class Payload
      * @param  array<string, mixed>  $parameters
      */
     private function __construct(
-        ContentType $contentType,
-        Method $method,
+        string $contentType,
+        string $method,
         ResourceUri $uri,
         array $parameters = []
     ) {
