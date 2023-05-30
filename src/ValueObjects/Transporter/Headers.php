@@ -48,10 +48,12 @@ final class Headers
      */
     public function withContentType(string $contentType, string $suffix = ''): self
     {
-        return new self([
-            ...$this->headers,
-            'Content-Type' => $contentType.$suffix,
-        ]);
+        return new self(
+            array_merge(
+                (array) $this->headers,
+                ['Content-Type' => $contentType . $suffix]
+            )
+        );
     }
 
     /**
@@ -59,10 +61,12 @@ final class Headers
      */
     public function withOrganization(string $organization): self
     {
-        return new self([
-            ...$this->headers,
-            'OpenAI-Organization' => $organization,
-        ]);
+        return new self(
+            array_merge(
+                (array) $this->headers,
+                ['OpenAI-Organization' => $organization]
+            )
+        );
     }
 
     /**
@@ -70,10 +74,12 @@ final class Headers
      */
     public function withCustomHeader(string $name, string $value): self
     {
-        return new self([
-            ...$this->headers,
-            $name => $value,
-        ]);
+        return new self(
+            array_merge(
+                (array) $this->headers,
+                [$name => $value]
+            )
+        );
     }
 
     /**
