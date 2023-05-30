@@ -33,7 +33,7 @@
 
 ## Get Started
 
-> **Requires [PHP 7.2+](https://php.net/releases/)**
+> **Requires [PHP 8.0+](https://php.net/releases/)**
 
 First, install OpenAI via the [Composer](https://getcomposer.org/) package manager:
 
