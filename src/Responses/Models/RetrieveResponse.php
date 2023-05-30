@@ -20,18 +20,46 @@ final class RetrieveResponse implements ResponseContract
 
     use Fakeable;
 
+    /** @var string */
+    public string $id;
+
+    /** @var string */
+    public string $object;
+
+    /** @var int */
+    public int $created;
+
+    /** @var string */
+    public string $ownedBy;
+
+    /** @var array<int, RetrieveResponsePermission> */
+    public array $permission;
+
+    /** @var string */
+    public string $root;
+
+    /** @var string|null */
+    public ?string $parent;
+
     /**
      * @param  array<int, RetrieveResponsePermission>  $permission
      */
     private function __construct(
-        public readonly string $id,
-        public readonly string $object,
-        public readonly int $created,
-        public readonly string $ownedBy,
-        public readonly array $permission,
-        public readonly string $root,
-        public readonly ?string $parent,
+        string $id,
+        string $object,
+        int $created,
+        string $ownedBy,
+        array $permission,
+        string $root,
+        ?string $parent
     ) {
+        $this->id = $id;
+        $this->object = $object;
+        $this->created = $created;
+        $this->ownedBy = $ownedBy;
+        $this->permission = $permission;
+        $this->root = $root;
+        $this->parent = $parent;
     }
 
     /**

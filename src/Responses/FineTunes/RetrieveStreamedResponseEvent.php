@@ -20,12 +20,28 @@ final class RetrieveStreamedResponseEvent implements ResponseContract
 
     use FakeableForStreamedResponse;
 
+    /** @var string */
+    public string $object;
+
+    /** @var int */
+    public int $createdAt;
+
+    /** @var string */
+    public string $level;
+
+    /** @var string */
+    public string $message;
+
     private function __construct(
-        public readonly string $object,
-        public readonly int $createdAt,
-        public readonly string $level,
-        public readonly string $message,
+        string $object,
+        int $createdAt,
+        string $level,
+        string $message
     ) {
+        $this->object = $object;
+        $this->createdAt = $createdAt;
+        $this->level = $level;
+        $this->message = $message;
     }
 
     /**

@@ -8,11 +8,23 @@ use OpenAI\Enums\Moderations\Category;
 
 final class CreateResponseCategory
 {
+    /** @var Category */
+    public Category $category;
+
+    /** @var bool */
+    public bool $violated;
+
+    /** @var float */
+    public float $score;
+
     private function __construct(
-        public readonly Category $category,
-        public readonly bool $violated,
-        public readonly float $score,
+        Category $category,
+        bool $violated,
+        float $score
     ) {
+        $this->category = $category;
+        $this->violated = $violated;
+        $this->score = $score;
     }
 
     /**

@@ -20,14 +20,26 @@ final class CreateResponse implements ResponseContract
 
     use Fakeable;
 
+    /** @var string */
+    public string $id;
+
+    /** @var string */
+    public string $model;
+
+    /** @var array<int, CreateResponseResult> */
+    public array $results;
+
     /**
      * @param  array<int, CreateResponseResult>  $results
      */
     private function __construct(
-        public readonly string $id,
-        public readonly string $model,
-        public readonly array $results,
+        string $id,
+        string $model,
+        array $results
     ) {
+        $this->id = $id;
+        $this->model = $model;
+        $this->results = $results;
     }
 
     /**

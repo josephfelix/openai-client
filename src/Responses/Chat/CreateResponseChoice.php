@@ -6,11 +6,23 @@ namespace OpenAI\Responses\Chat;
 
 final class CreateResponseChoice
 {
+    /** @var int */
+    public int $index;
+
+    /** @var CreateResponseMessage */
+    public CreateResponseMessage $message;
+
+    /** @var string|null */
+    public ?string $finishReason;
+    
     private function __construct(
-        public readonly int $index,
-        public readonly CreateResponseMessage $message,
-        public readonly ?string $finishReason,
+        int $index,
+        CreateResponseMessage $message,
+        ?string $finishReason
     ) {
+        $this->index = $index;
+        $this->message = $message;
+        $this->finishReason = $finishReason;
     }
 
     /**

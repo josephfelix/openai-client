@@ -20,13 +20,21 @@ final class ListEventsResponse implements ResponseContract
 
     use Fakeable;
 
+    /** @var string */
+    public string $object;
+
+    /** @var array<int, RetrieveResponseEvent> */
+    public array $data;
+
     /**
      * @param  array<int, RetrieveResponseEvent>  $data
      */
     private function __construct(
-        public readonly string $object,
-        public readonly array $data,
+        string $object,
+        array $data
     ) {
+        $this->object = $object;
+        $this->data = $data;
     }
 
     /**

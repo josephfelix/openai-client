@@ -20,11 +20,23 @@ final class DeleteResponse implements ResponseContract
 
     use Fakeable;
 
+    /** @var string */
+    public string $id;
+
+    /** @var string */
+    public string $object;
+
+    /** @var bool */
+    public bool $deleted;
+
     private function __construct(
-        public readonly string $id,
-        public readonly string $object,
-        public readonly bool $deleted,
+        string $id,
+        string $object,
+        bool $deleted
     ) {
+        $this->id = $id;
+        $this->object = $object;
+        $this->deleted = $deleted;
     }
 
     /**

@@ -17,10 +17,18 @@ final class EditResponseData implements ResponseContract
      */
     use ArrayAccessible;
 
+    /** @var string */
+    public string $url;
+
+    /** @var string */
+    public string $b64_json;
+
     private function __construct(
-        public readonly string $url = '',
-        public readonly string $b64_json = '',
+        string $url = '',
+        string $b64_json = ''
     ) {
+        $this->url = $url;
+        $this->b64_json = $b64_json;
     }
 
     /**

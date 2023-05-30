@@ -8,14 +8,21 @@ use OpenAI\Enums\Moderations\Category;
 
 final class CreateResponseResult
 {
+    /** @var array<string, CreateResponseCategory> */
+    public array $categories;
+
+    /** @var bool */
+    public bool $flagged;
+    
     /**
      * @param  array<string, CreateResponseCategory>  $categories
      */
     private function __construct(
-        public readonly array $categories,
-        public readonly bool $flagged,
+        array $categories,
+        bool $flagged
     ) {
-        // ..
+        $this->categories = $categories;
+        $this->flagged = $flagged;
     }
 
     /**

@@ -20,16 +20,36 @@ final class TranslationResponse implements ResponseContract
 
     use Fakeable;
 
+    /** @var ?string */
+    public ?string $task;
+
+    /** @var ?string */
+    public ?string $language;
+
+    /** @var ?float */
+    public ?float $duration;
+
+    /** @var array<int, TranslationResponseSegment> */
+    public array $segments;
+
+    /** @var string */
+    public string $text;
+
     /**
      * @param  array<int, TranslationResponseSegment>  $segments
      */
     private function __construct(
-        public readonly ?string $task,
-        public readonly ?string $language,
-        public readonly ?float $duration,
-        public readonly array $segments,
-        public readonly string $text,
+        ?string $task,
+        ?string $language,
+        ?float $duration,
+        array $segments,
+        string $text
     ) {
+        $this->task = $task;
+        $this->language = $language;
+        $this->duration = $duration;
+        $this->segments = $segments;
+        $this->text = $text;
     }
 
     /**

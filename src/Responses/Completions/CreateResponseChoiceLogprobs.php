@@ -6,6 +6,18 @@ namespace OpenAI\Responses\Completions;
 
 final class CreateResponseChoiceLogprobs
 {
+    /** @var array<int, string> */
+    public array $tokens;
+
+    /** @var array<int, float> */
+    public array $tokenLogprobs;
+
+    /** @var array<int, string>|null */
+    public ?array $topLogprobs;
+
+    /** @var array<int, int> */
+    public array $textOffset;
+    
     /**
      * @param  array<int, string>  $tokens
      * @param  array<int, float>  $tokenLogprobs
@@ -13,11 +25,15 @@ final class CreateResponseChoiceLogprobs
      * @param  array<int, int>  $textOffset
      */
     private function __construct(
-        public readonly array $tokens,
-        public readonly array $tokenLogprobs,
-        public readonly ?array $topLogprobs,
-        public readonly array $textOffset,
+        array $tokens,
+        array $tokenLogprobs,
+        ?array $topLogprobs,
+        array $textOffset
     ) {
+        $this->tokens = $tokens;
+        $this->tokenLogprobs = $tokenLogprobs;
+        $this->topLogprobs = $topLogprobs;
+        $this->textOffset = $textOffset;
     }
 
     /**

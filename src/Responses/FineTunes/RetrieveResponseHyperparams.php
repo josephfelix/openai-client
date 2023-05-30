@@ -17,12 +17,28 @@ final class RetrieveResponseHyperparams implements ResponseContract
      */
     use ArrayAccessible;
 
+    /** @var ?int */
+    public ?int $batchSize;
+
+    /** @var ?float */
+    public ?float $learningRateMultiplier;
+
+    /** @var int */
+    public int $nEpochs;
+
+    /** @var float */
+    public float $promptLossWeight;
+
     private function __construct(
-        public readonly ?int $batchSize,
-        public readonly ?float $learningRateMultiplier,
-        public readonly int $nEpochs,
-        public readonly float $promptLossWeight,
+        ?int $batchSize,
+        ?float $learningRateMultiplier,
+        int $nEpochs,
+        float $promptLossWeight
     ) {
+        $this->batchSize = $batchSize;
+        $this->learningRateMultiplier = $learningRateMultiplier;
+        $this->nEpochs = $nEpochs;
+        $this->promptLossWeight = $promptLossWeight;
     }
 
     /**

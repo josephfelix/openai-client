@@ -20,19 +20,51 @@ final class CreateResponse implements ResponseContract
 
     use Fakeable;
 
+    /** @var string */
+    public string $id;
+
+    /** @var string */
+    public string $object;
+
+    /** @var int */
+    public int $bytes;
+
+    /** @var int */
+    public int $createdAt;
+
+    /** @var string */
+    public string $filename;
+
+    /** @var string */
+    public string $purpose;
+
+    /** @var string */
+    public string $status;
+
+    /** @var array<array-key, mixed>|null */
+    public $statusDetails;
+
     /**
      * @param  array<array-key, mixed>|null  $statusDetails
      */
     private function __construct(
-        public readonly string $id,
-        public readonly string $object,
-        public readonly int $bytes,
-        public readonly int $createdAt,
-        public readonly string $filename,
-        public readonly string $purpose,
-        public readonly string $status,
-        public readonly $statusDetails,
+        string $id,
+        string $object,
+        int $bytes,
+        int $createdAt,
+        string $filename,
+        string $purpose,
+        string $status,
+        $statusDetails
     ) {
+        $this->id = $id;
+        $this->object = $object;
+        $this->bytes = $bytes;
+        $this->createdAt = $createdAt;
+        $this->filename = $filename;
+        $this->purpose = $purpose;
+        $this->status = $status;
+        $this->statusDetails = $statusDetails;
     }
 
     /**

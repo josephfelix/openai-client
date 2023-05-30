@@ -21,12 +21,24 @@ final class ListResponse implements ResponseContract
     use Fakeable;
 
     /**
+     * @var array<int, RetrieveResponse>
+     */
+    private array $data;
+
+    /**
+     * @return array<int, RetrieveResponse>
+     */
+    private string $object;
+
+    /**
      * @param  array<int, RetrieveResponse>  $data
      */
     private function __construct(
-        public readonly string $object,
-        public readonly array $data,
+        string $object,
+        array $data
     ) {
+        $this->object = $object;
+        $this->data = $data;
     }
 
     /**

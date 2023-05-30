@@ -6,10 +6,18 @@ namespace OpenAI\Responses\Embeddings;
 
 final class CreateResponseUsage
 {
+    /** @var int */
+    public int $promptTokens;
+
+    /** @var int */
+    public int $totalTokens;
+
     private function __construct(
-        public readonly int $promptTokens,
-        public readonly int $totalTokens,
+        int $promptTokens,
+        int $totalTokens
     ) {
+        $this->promptTokens = $promptTokens;
+        $this->totalTokens = $totalTokens;
     }
 
     /**
