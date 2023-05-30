@@ -6,12 +6,28 @@ namespace OpenAI\Responses\Completions;
 
 final class CreateResponseChoice
 {
+    /** @var string */
+    public string $text;
+
+    /** @var int */
+    public int $index;
+
+    /** @var CreateResponseChoiceLogprobs|null */
+    public ?CreateResponseChoiceLogprobs $logprobs;
+
+    /** @var string|null */
+    public ?string $finishReason;
+
     private function __construct(
-        public readonly string $text,
-        public readonly int $index,
-        public readonly ?CreateResponseChoiceLogprobs $logprobs,
-        public readonly ?string $finishReason,
+        string $text,
+        int $index,
+        ?CreateResponseChoiceLogprobs $logprobs,
+        ?string $finishReason
     ) {
+        $this->text = $text;
+        $this->index = $index;
+        $this->logprobs = $logprobs;
+        $this->finishReason = $finishReason;
     }
 
     /**

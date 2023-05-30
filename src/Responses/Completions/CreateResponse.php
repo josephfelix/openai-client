@@ -13,6 +13,24 @@ use OpenAI\Testing\Responses\Concerns\Fakeable;
  */
 final class CreateResponse implements ResponseContract
 {
+    /** @var string */
+    public string $id;
+
+    /** @var string */
+    public string $object;
+
+    /** @var int */
+    public int $created;
+
+    /** @var string */
+    public string $model;
+
+    /** @var array<int, CreateResponseChoice> */
+    public array $choices;
+
+    /** @var CreateResponseUsage */
+    public CreateResponseUsage $usage;
+
     /**
      * @use ArrayAccessible<array{id: string, object: string, created: int, model: string, choices: array<int, array{text: string, index: int, logprobs: array{tokens: array<int, string>, token_logprobs: array<int, float>, top_logprobs: array<int, string>|null, text_offset: array<int, int>}|null, finish_reason: string|null}>, usage: array{prompt_tokens: int, completion_tokens: int|null, total_tokens: int}}>
      */
@@ -24,13 +42,19 @@ final class CreateResponse implements ResponseContract
      * @param  array<int, CreateResponseChoice>  $choices
      */
     private function __construct(
-        public readonly string $id,
-        public readonly string $object,
-        public readonly int $created,
-        public readonly string $model,
-        public readonly array $choices,
-        public readonly CreateResponseUsage $usage,
+        string $id,
+        string $object,
+        int $created,
+        string $model,
+        array $choices,
+        CreateResponseUsage $usage
     ) {
+        $this->id = $id;
+        $this->object = $object;
+        $this->created = $created;
+        $this->model = $model;
+        $this->choices = $choices;
+        $this->usage = $usage;
     }
 
     /**

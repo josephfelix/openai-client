@@ -12,14 +12,17 @@ use OpenAI\ValueObjects\ApiKey;
  */
 final class Headers
 {
+    /** @var array<string, string> */
+    private array $headers;
+
     /**
      * Creates a new Headers value object.
      *
      * @param  array<string, string>  $headers
      */
-    private function __construct(private readonly array $headers)
+    private function __construct(array $headers)
     {
-        // ..
+        $this->headers = $headers;
     }
 
     /**

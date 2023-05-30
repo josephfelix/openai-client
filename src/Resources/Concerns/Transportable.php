@@ -8,11 +8,14 @@ use OpenAI\Contracts\TransporterContract;
 
 trait Transportable
 {
+    /** @var TransporterContract */
+    protected TransporterContract $transporter;
+    
     /**
      * Creates a Client instance with the given API token.
      */
-    public function __construct(private readonly TransporterContract $transporter)
+    public function __construct(TransporterContract $transporter)
     {
-        // ..
+        $this->transporter = $transporter;
     }
 }

@@ -6,20 +6,68 @@ namespace OpenAI\Responses\Models;
 
 final class RetrieveResponsePermission
 {
+    /** @var string */
+    public string $id;
+
+    /** @var string */
+    public string $object;
+
+    /** @var int */
+    public int $created;
+
+    /** @var bool */
+    public bool $allowCreateEngine;
+
+    /** @var bool */
+    public bool $allowSampling;
+
+    /** @var bool */
+    public bool $allowLogprobs;
+
+    /** @var bool */
+    public bool $allowSearchIndices;
+
+    /** @var bool */
+    public bool $allowView;
+
+    /** @var bool */
+    public bool $allowFineTuning;
+
+    /** @var string */
+    public string $organization;
+
+    /** @var string|null */
+    public ?string $group;
+
+    /** @var bool */
+    public bool $isBlocking;
+
     private function __construct(
-        public readonly string $id,
-        public readonly string $object,
-        public readonly int $created,
-        public readonly bool $allowCreateEngine,
-        public readonly bool $allowSampling,
-        public readonly bool $allowLogprobs,
-        public readonly bool $allowSearchIndices,
-        public readonly bool $allowView,
-        public readonly bool $allowFineTuning,
-        public readonly string $organization,
-        public readonly ?string $group,
-        public readonly bool $isBlocking,
+        string $id,
+        string $object,
+        int $created,
+        bool $allowCreateEngine,
+        bool $allowSampling,
+        bool $allowLogprobs,
+        bool $allowSearchIndices,
+        bool $allowView,
+        bool $allowFineTuning,
+        string $organization,
+        ?string $group,
+        bool $isBlocking
     ) {
+        $this->id = $id;
+        $this->object = $object;
+        $this->created = $created;
+        $this->allowCreateEngine = $allowCreateEngine;
+        $this->allowSampling = $allowSampling;
+        $this->allowLogprobs = $allowLogprobs;
+        $this->allowSearchIndices = $allowSearchIndices;
+        $this->allowView = $allowView;
+        $this->allowFineTuning = $allowFineTuning;
+        $this->organization = $organization;
+        $this->group = $group;
+        $this->isBlocking = $isBlocking;
     }
 
     /**

@@ -12,6 +12,39 @@ use OpenAI\Responses\Concerns\ArrayAccessible;
  */
 final class TranscriptionResponseSegment implements ResponseContract
 {
+    /** @var int */
+    public int $id;
+
+    /** @var int */
+    public int $seek;
+
+    /** @var float */
+    public float $start;
+
+    /** @var float */
+    public float $end;
+
+    /** @var string */
+    public string $text;
+
+    /** @var array<int, int> */
+    public array $tokens;
+
+    /** @var float */
+    public float $temperature;
+
+    /** @var float */
+    public float $avgLogprob;
+
+    /** @var float */
+    public float $compressionRatio;
+
+    /** @var float */
+    public float $noSpeechProb;
+
+    /** @var bool */
+    public bool $transient;
+
     /**
      * @use ArrayAccessible<array{id: int, seek: int, start: float, end: float, text: string, tokens: array<int, int>, temperature: float, avg_logprob: float, compression_ratio: float, no_speech_prob: float, transient: bool}>
      */
@@ -21,18 +54,29 @@ final class TranscriptionResponseSegment implements ResponseContract
      * @param  array<int, int>  $tokens
      */
     private function __construct(
-        public readonly int $id,
-        public readonly int $seek,
-        public readonly float $start,
-        public readonly float $end,
-        public readonly string $text,
-        public readonly array $tokens,
-        public readonly float $temperature,
-        public readonly float $avgLogprob,
-        public readonly float $compressionRatio,
-        public readonly float $noSpeechProb,
-        public readonly bool $transient,
+        int $id,
+        int $seek,
+        float $start,
+        float $end,
+        string $text,
+        array $tokens,
+        float $temperature,
+        float $avgLogprob,
+        float $compressionRatio,
+        float $noSpeechProb,
+        bool $transient
     ) {
+        $this->id = $id;
+        $this->seek = $seek;
+        $this->start = $start;
+        $this->end = $end;
+        $this->text = $text;
+        $this->tokens = $tokens;
+        $this->temperature = $temperature;
+        $this->avgLogprob = $avgLogprob;
+        $this->compressionRatio = $compressionRatio;
+        $this->noSpeechProb = $noSpeechProb;
+        $this->transient = $transient;
     }
 
     /**

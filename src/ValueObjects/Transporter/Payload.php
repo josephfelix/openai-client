@@ -18,18 +18,33 @@ use Psr\Http\Message\StreamInterface;
  */
 final class Payload
 {
+    /** @var array<string, mixed> */
+    private ContentType $contentType;
+
+    /** @var array<string, mixed> */
+    private Method $method;
+
+    /** @var array<string, mixed> */
+    private ResourceUri $uri;
+
+    /** @var array<string, mixed> */
+    private array $parameters;
+
     /**
      * Creates a new Request value object.
      *
      * @param  array<string, mixed>  $parameters
      */
     private function __construct(
-        private readonly ContentType $contentType,
-        private readonly Method $method,
-        private readonly ResourceUri $uri,
-        private readonly array $parameters = [],
+        ContentType $contentType,
+        Method $method,
+        ResourceUri $uri,
+        array $parameters = []
     ) {
-        // ..
+        $this->contentType = $contentType;
+        $this->method = $method;
+        $this->uri = $uri;
+        $this->parameters = $parameters;
     }
 
     /**

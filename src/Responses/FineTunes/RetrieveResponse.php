@@ -20,6 +20,45 @@ final class RetrieveResponse implements ResponseContract
 
     use Fakeable;
 
+    /** @var string */
+    public string $id;
+
+    /** @var string */
+    public string $object;
+
+    /** @var string */
+    public string $model;
+
+    /** @var int */
+    public int $createdAt;
+
+    /** @var array<int, RetrieveResponseEvent> */
+    public array $events;
+
+    /** @var string|null */
+    public ?string $fineTunedModel;
+
+    /** @var RetrieveResponseHyperparams */
+    public RetrieveResponseHyperparams $hyperparams;
+
+    /** @var string */
+    public string $organizationId;
+
+    /** @var array<int, RetrieveResponseFile> */
+    public array $resultFiles;
+
+    /** @var string */
+    public string $status;
+
+    /** @var array<int, RetrieveResponseFile> */
+    public array $validationFiles;
+
+    /** @var array<int, RetrieveResponseFile> */
+    public array $trainingFiles;
+
+    /** @var int */
+    public int $updatedAt;
+
     /**
      * @param  array<int, RetrieveResponseEvent>  $events
      * @param  array<int, RetrieveResponseFile>  $resultFiles
@@ -27,20 +66,33 @@ final class RetrieveResponse implements ResponseContract
      * @param  array<int, RetrieveResponseFile>  $trainingFiles
      */
     private function __construct(
-        public readonly string $id,
-        public readonly string $object,
-        public readonly string $model,
-        public readonly int $createdAt,
-        public readonly array $events,
-        public readonly ?string $fineTunedModel,
-        public readonly RetrieveResponseHyperparams $hyperparams,
-        public readonly string $organizationId,
-        public readonly array $resultFiles,
-        public readonly string $status,
-        public readonly array $validationFiles,
-        public readonly array $trainingFiles,
-        public readonly int $updatedAt,
+        string $id,
+        string $object,
+        string $model,
+        int $createdAt,
+        array $events,
+        ?string $fineTunedModel,
+        RetrieveResponseHyperparams $hyperparams,
+        string $organizationId,
+        array $resultFiles,
+        string $status,
+        array $validationFiles,
+        array $trainingFiles,
+        int $updatedAt
     ) {
+        $this->id = $id;
+        $this->object = $object;
+        $this->model = $model;
+        $this->createdAt = $createdAt;
+        $this->events = $events;
+        $this->fineTunedModel = $fineTunedModel;
+        $this->hyperparams = $hyperparams;
+        $this->organizationId = $organizationId;
+        $this->resultFiles = $resultFiles;
+        $this->status = $status;
+        $this->validationFiles = $validationFiles;
+        $this->trainingFiles = $trainingFiles;
+        $this->updatedAt = $updatedAt;
     }
 
     /**

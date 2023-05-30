@@ -11,12 +11,15 @@ use OpenAI\Contracts\StringableContract;
  */
 final class ApiKey implements StringableContract
 {
+    /** @var string */
+    private string $apiKey;
+
     /**
      * Creates a new API token value object.
      */
-    private function __construct(public readonly string $apiKey)
+    private function __construct(string $apiKey)
     {
-        // ..
+        $this->apiKey = $apiKey;
     }
 
     public static function from(string $apiKey): self

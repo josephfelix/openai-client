@@ -37,7 +37,7 @@ final class TranslationResponse implements ResponseContract
      *
      * @param  array{task: ?string, language: ?string, duration: ?float, segments: array<int, array{id: int, seek: int, start: float, end: float, text: string, tokens: array<int, int>, temperature: float, avg_logprob: float, compression_ratio: float, no_speech_prob: float, transient: bool}>, text: string}  $attributes
      */
-    public static function from(array|string $attributes): self
+    public static function from($attributes): self
     {
         if (is_string($attributes)) {
             $attributes = ['text' => $attributes];

@@ -9,8 +9,11 @@ use OpenAI\Testing\Requests\TestRequest;
 
 trait Testable
 {
-    public function __construct(protected ClientFake $fake)
+    protected ClientFake $fake;
+
+    public function __construct(ClientFake $fake)
     {
+        $this->fake = $fake;
     }
 
     abstract protected function resource(): string;
@@ -18,7 +21,7 @@ trait Testable
     /**
      * @param  array<string, mixed>|string|null  $parameters
      */
-    protected function record(string $method, array|string|null $parameters = null): ResponseContract|StreamResponse|string
+    protected function record(string $method, $parameters = null)
     {
         return $this->fake->record(new TestRequest($this->resource(), $method, $parameters));
     }

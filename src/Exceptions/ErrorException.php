@@ -8,14 +8,19 @@ use Exception;
 
 final class ErrorException extends Exception
 {
+    /** @var array{message: string, type: ?string, code: ?string} */
+    private array $contents;
+    
     /**
      * Creates a new Exception instance.
      *
      * @param  array{message: string, type: ?string, code: ?string}  $contents
      */
-    public function __construct(private readonly array $contents)
+    public function __construct(array $contents)
     {
         parent::__construct($contents['message']);
+
+        $this->contents = $contents;
     }
 
     /**

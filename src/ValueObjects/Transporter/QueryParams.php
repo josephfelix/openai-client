@@ -9,14 +9,17 @@ namespace OpenAI\ValueObjects\Transporter;
  */
 final class QueryParams
 {
+    /** @var array<string, string|int> */
+    private array $params;
+
     /**
      * Creates a new Query Params value object.
      *
      * @param  array<string, string|int>  $params
      */
-    private function __construct(private readonly array $params)
+    private function __construct(array $params)
     {
-        // ..
+        $this->params = $params;
     }
 
     /**

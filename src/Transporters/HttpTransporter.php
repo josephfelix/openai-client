@@ -24,23 +24,42 @@ use Psr\Http\Message\ResponseInterface;
  */
 final class HttpTransporter implements TransporterContract
 {
+    /** @var ClientInterface */
+    private ClientInterface $client;
+
+    /** @var BaseUri */
+    private BaseUri $baseUri;
+
+    /** @var Headers */
+    private Headers $headers;
+
+    /** @var QueryParams */
+    private QueryParams $queryParams;
+
+    /** @var Closure */
+    private Closure $streamHandler;
+
     /**
      * Creates a new Http Transporter instance.
      */
     public function __construct(
-        private readonly ClientInterface $client,
-        private readonly BaseUri $baseUri,
-        private readonly Headers $headers,
-        private readonly QueryParams $queryParams,
-        private readonly Closure $streamHandler,
+        ClientInterface $client,
+        BaseUri $baseUri,
+        Headers $headers,
+        QueryParams $queryParams,
+        Closure $streamHandler
     ) {
-        // ..
+        $this->client = $client;
+        $this->baseUri = $baseUri;
+        $this->headers = $headers;
+        $this->queryParams = $queryParams;
+        $this->streamHandler = $streamHandler;
     }
 
     /**
      * {@inheritDoc}
      */
-    public function requestObject(Payload $payload): array|string
+    public function requestObject(Payload $payload)
     {
         $request = $payload->toRequest($this->baseUri, $this->headers, $this->queryParams);
 
@@ -107,7 +126,7 @@ final class HttpTransporter implements TransporterContract
         }
     }
 
-    private function throwIfJsonError(ResponseInterface $response, string|ResponseInterface $contents): void
+    private function throwIfJsonError(ResponseInterface $response, $contents): void
     {
         if ($response->getStatusCode() < 400) {
             return;

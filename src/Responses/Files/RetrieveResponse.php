@@ -31,7 +31,7 @@ final class RetrieveResponse implements ResponseContract
         public readonly string $filename,
         public readonly string $purpose,
         public readonly string $status,
-        public readonly array|string|null $statusDetails,
+        public readonly $statusDetails,
     ) {
     }
 

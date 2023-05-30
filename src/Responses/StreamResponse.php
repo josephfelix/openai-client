@@ -14,16 +14,23 @@ use Psr\Http\Message\StreamInterface;
  */
 final class StreamResponse implements IteratorAggregate
 {
+    /** @var class-string<TResponse> */
+    private string $responseClass;
+
+    /** @var ResponseInterface */
+    private ResponseInterface $response;
+
     /**
      * Creates a new Stream Response instance.
      *
      * @param  class-string<TResponse>  $responseClass
      */
     public function __construct(
-        private readonly string $responseClass,
-        private readonly ResponseInterface $response,
+        string $responseClass,
+        ResponseInterface $response
     ) {
-        //
+        $this->responseClass = $responseClass;
+        $this->response = $response;
     }
 
     /**
