@@ -13,4 +13,17 @@ class Category
     public const SexualMinors = 'sexual/minors';
     public const Violence = 'violence';
     public const ViolenceGraphic = 'violence/graphic';
+
+    static function cases(): array
+    {
+        return [
+            self::Hate,
+            self::HateThreatening,
+            self::SelfHarm,
+            self::Sexual,
+            self::SexualMinors,
+            self::Violence,
+            self::ViolenceGraphic,
+        ];
+    }
 }
